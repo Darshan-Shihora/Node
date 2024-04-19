@@ -5,6 +5,7 @@ import { bookRouter } from "./routes/book.route.js";
 import { userRouter } from "./routes/user.route.js";
 import multer from "multer";
 import cors from "cors";
+import { sequelize } from "./database.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -20,6 +21,15 @@ const storage = multer.diskStorage({
   },
 });
 
+async function syncDatabase() {
+  try {
+    await sequelize.authenticate();
+    console.log("Table created successfully.");
+  } catch (error) {
+    console.error("Error syncing table:", error);
+  }
+}
+syncDatabase();
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(multer({ storage: storage }).single("image"));

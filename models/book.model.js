@@ -1,6 +1,5 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database.js";
-import { User } from "./user.model.js";
 
 export const Book = sequelize.define("book", {
   id: {
@@ -18,4 +17,3 @@ export const Book = sequelize.define("book", {
   author: DataTypes.STRING,
   releaseDate: DataTypes.DATE,
 });
-

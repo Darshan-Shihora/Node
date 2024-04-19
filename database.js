@@ -11,11 +11,11 @@ export const sequelize = new Sequelize(
   }
 );
 
-async () => {
-  try {
-    await sequelize.authenticate();
-    console.log("Connection has been established successfully.");
-  } catch (error) {
-    console.log(error);
-  }
-};
+// async () => {
+//   try {
+//     await sequelize.authenticate();
+//     console.log("Connection has been established successfully.");
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };

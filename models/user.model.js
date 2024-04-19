@@ -1,6 +1,5 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database.js";
-import { Book } from "./book.model.js";
 
 export const User = sequelize.define("user", {
   id: {
@@ -11,8 +10,4 @@ export const User = sequelize.define("user", {
   },
   userName: DataTypes.STRING,
   password: DataTypes.STRING,
-  books: {
-    type: DataTypes.STRING,
-  },
 });
-
