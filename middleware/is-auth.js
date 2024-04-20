@@ -16,6 +16,7 @@ const auth = (req, res, next) => {
   }
   if (decodedToken) {
     req.userId = decodedToken.userId;
+    console.log(req.userId);
     next();
   } else {
     res.send({

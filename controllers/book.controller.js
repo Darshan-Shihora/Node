@@ -44,9 +44,9 @@ export const getBook = async (req, res, next) => {
 export const postAddBook = async (req, res, next) => {
   const { title, author, releaseDate } = req.body;
   const image = req.file;
-  console.log(req.file);
+  // console.log(req.file);
   const imageUrl = image.path.split("\\")[1];
-  console.log(imageUrl);
+  // console.log(imageUrl);
   const exsistingBook = await Book.findOne({ where: { title: title } });
   if (!exsistingBook) {
     const book = await Book.create({
@@ -54,6 +54,7 @@ export const postAddBook = async (req, res, next) => {
       author: author,
       releaseDate: releaseDate,
       image: imageUrl,
+      userId: +req.userId,
     });
     res.send({
       data: book,

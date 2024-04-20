@@ -11,11 +11,12 @@ export const sequelize = new Sequelize(
   }
 );
 
-// async () => {
-//   try {
-//     await sequelize.authenticate();
-//     console.log("Connection has been established successfully.");
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+async function syncDatabase() {
+  try {
+    await sequelize.authenticate();
+    console.log("Database connected successfully.");
+  } catch (error) {
+    console.error("Error syncing table:", error);
+  }
+}
+syncDatabase();

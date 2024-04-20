@@ -1,6 +1,7 @@
 import { User } from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { Book } from "../models/book.model.js";
 
 export const postSignUp = async (req, res, next) => {
   const { userName, password } = req.body;
@@ -60,4 +61,20 @@ export const postLogin = async (req, res, next) => {
       status: "Error",
     });
   }
+};
+
+export const getUsers = async (req, res, next) => {
+  const users = await User.findAll({
+    include: [
+      {
+        model: Book,
+        as: "book",
+        attributes: ["title", "image", "author", "releaseDate", "userId"],
+      },
+    ],
+  });
+  console.log(users);
+  res.send({
+    data: users,
+  });
 };
