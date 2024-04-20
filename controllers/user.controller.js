@@ -69,7 +69,7 @@ export const getUsers = async (req, res, next) => {
       {
         model: Book,
         as: "book",
-        attributes: ["title", "image", "author", "releaseDate", "userId"],
+        attributes: ["title", "image", "author", "releaseDate"],
       },
     ],
   });
